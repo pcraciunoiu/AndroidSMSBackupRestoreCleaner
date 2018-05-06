@@ -355,7 +355,7 @@ def load_into_db(conn, tree):
             num_skipped += 1
 
     root.clear()  # Clear this super huge tree. We don't need it anymore
-    log.debug("Done skipping MMS. Skipped entries: " + str(num_skipped))
+    log.debug("Done duplicate check. Skipped duplicate entries: " + str(num_skipped))
     conn.commit()
     return mms_list
 
