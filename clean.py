@@ -12,7 +12,7 @@ except ImportError:
 import logging as log
 from datetime import datetime
 import argparse
-import glob, fnmatch, os
+import glob, fnmatch, os, re
 
 #    TODO SMSCOUNT backup_set backup_date
 #
@@ -297,10 +297,18 @@ def insert_sms(conn, child):
     return insert_default(conn, sql, vals, child)
 
 
+def mms_compatibility(child, columns):
+    oppo_counter = columns.count("oppo")
+    columns = re.sub('(oppo_[a-z_]+,)', '', columns)
+    log.debug("columns %s" % columns)
+    placeholder_counter = (len(child.attrib)+1-oppo_counter)
+    placeholders = ', '.join('?' * placeholder_counter)
+    sql = 'INSERT INTO mmss ({}) VALUES ({})'.format(columns, placeholders)
+    return sql
+
 def insert_mms(conn, child):
     columns = 'id ,'+', '.join(child.attrib.keys())
-    placeholders = ', '.join('?' * (len(child.attrib)+1))
-    sql = 'INSERT INTO mmss ({}) VALUES ({})'.format(columns, placeholders)
+    sql = mms_compatibility(child, columns)
     #id_mms = conn.execute('SELECT IFNULL(MAX(id), 0) + 1 FROM mmss')
     global GLOB_ID_MMS
     id_mms = GLOB_ID_MMS
