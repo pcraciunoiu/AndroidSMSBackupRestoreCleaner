@@ -44,7 +44,7 @@ Emoji needs the `lxml` package. Use `pip install lxml` to install it first, then
 # Current limitations
 * Python 2 only. (For now?)
 * ~~No emoji support~~ Now supports emoji! See above.
-* No MMS duplicate filtering. It just maintains the MMS entries as is.
+* ~~No MMS duplicate filtering. It just maintains the MMS entries as is.~~
 
 # DB info
 
