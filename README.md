@@ -24,7 +24,9 @@ Big thanks to [`radj`](https://github.com/radj) for [the original project](https
 
 # Example Usage
 
-Need to have Python 2.x installed.
+Need to have Python 3.x installed.
+
+Default region constant can be updated by setting `DEFAULT_REGION`, used for phone number duplicate detection between SMS/MMS.
 
 ## With single file
 `python clean.py -i ~/SMSBackupRestore/big_backup.xml -o output_file.xml`

@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "AndroidSMSBackupRestoreCleaner"
+version = "0.1.0"
+description = ""
+authors = ["Paul Craciunoiu <paul@craciunoiu.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+phonenumbers = "^8.13.7"
+lxml = "^4.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
