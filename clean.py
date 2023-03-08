@@ -68,6 +68,7 @@ def main(input_paths, output_path):
 
 def write_file(output_path, root):
     tree = XML.ElementTree(root)
+    XML.ElementTree.indent(tree)
     tree.write(output_path, xml_declaration=True, encoding="UTF-8")
 
 
